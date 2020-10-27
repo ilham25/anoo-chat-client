@@ -5,15 +5,18 @@ import InputContainer from "./components/InputContainer";
 import Navbar from "./components/Navbar";
 import "./styles/style.css";
 
-import socketIOClient from "socket.io-client";
+import SocketIo from "socket.io-client";
 const ENDPOINT = "http://localhost:3001";
 
 function App() {
-  const socket = socketIOClient(ENDPOINT);
+  const io = SocketIo(ENDPOINT);
   const [chatList, setChatList] = useState([]);
 
+  if (chatList.length >= 10) {
+    chatList.shift();
+  }
   useEffect(() => {
-    socket.on("chat received", (usr, msg) => {
+    io.on("chat received", (usr, msg) => {
       setChatList((oldChatList) => [
         ...oldChatList,
         {
