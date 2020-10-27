@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import ChatContainer from "./components/ChatContainer";
+import InputContainer from "./components/InputContainer";
+import Navbar from "./components/Navbar";
+import "./styles/style.css";
 
 function App() {
+  const dummyChat = [
+    {
+      username: "iruha",
+      message: "mantap gan",
+    },
+    {
+      username: "reimu",
+      message: "apaan njir",
+    },
+    {
+      username: "aoi",
+      message: "punten numpang lewat gan",
+    },
+    {
+      username: "bizuu",
+      message: "aoakwoawk numpang chat",
+    },
+    {
+      username: "sariel",
+      message: "yehee masuk tipi",
+    },
+    {
+      username: "gaskeun",
+      message: "dummy text",
+    },
+    {
+      username: "mri_vein",
+      message: "naisu bisa",
+    },
+    {
+      username: "code_essen",
+      message: "im the bone of my sword",
+    },
+  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <ChatContainer>
+        {dummyChat.map((chat) => (
+          <div className="chat">
+            <h5 className="username">{chat.username}</h5>
+            <p className="message">{chat.message}</p>
+          </div>
+        ))}
+      </ChatContainer>
+      <InputContainer />
     </div>
   );
 }

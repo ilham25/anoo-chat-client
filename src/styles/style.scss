@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+$primary: #2196f3;
+$darkGrey: #212121;
+
+@mixin bxShadow {
+  box-shadow: 0px 18px 30px 0px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ededed;
+  overflow: hidden;
+}
+
+.navbar {
+  height: 10vh;
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  .waves {
+    width: 100vw;
+    object-fit: cover;
+    position: relative;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+  }
+  .navbar-content {
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ani {
+      height: 50px;
+      margin-right: 10px;
+    }
+    h2 {
+      font-weight: normal;
+      color: white;
+    }
+    .react {
+      height: 40px;
+      width: 40px;
+      padding: 5px;
+      object-fit: fill;
+      border-radius: 5px;
+      margin-left: 10px;
+      background-color: $darkGrey;
+    }
+  }
+}
+.chat-container {
+  height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .chat {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem;
+    @include bxShadow();
+    h5 {
+      color: $primary;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: $darkGrey;
+      text-align: justify;
+    }
+  }
+}
+
+.input-container {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .chat-input {
+    padding: 1rem 2rem;
+    height: 6vh;
+    width: 90vw;
+    border: 2px solid rgb(201, 201, 201);
+    border-radius: 100px;
+    outline: none;
+    &:focus {
+      border: 2px solid $primary;
+    }
+  }
+  button {
+    border: none;
+    outline: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
