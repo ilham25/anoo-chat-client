@@ -1,11 +1,15 @@
 import { useState } from "react";
+import socketIOClient from "socket.io-client";
+
+const ENDPOINT = "http://localhost:3001";
 
 export default function InputContainer() {
   const [message, setMessage] = useState("");
 
   const sendMessage = (e) => {
     e.preventDefault();
-    console.log(message);
+    const socket = socketIOClient(ENDPOINT);
+    socket.emit("chat message", message);
     setMessage("");
   };
 
