@@ -111,17 +111,25 @@
           justify-content: center;
 }
 
-.input-container .chat-input {
+.input-container input {
   padding: 1rem 2rem;
   height: 6vh;
-  width: 90vw;
   border: 2px solid #c9c9c9;
   border-radius: 100px;
   outline: none;
 }
 
-.input-container .chat-input:focus {
+.input-container input:focus {
   border: 2px solid #2196f3;
+}
+
+.input-container .chat-input {
+  width: 60vw;
+}
+
+.input-container .username-input {
+  width: 20vw;
+  margin-right: 1rem;
 }
 
 .input-container button {

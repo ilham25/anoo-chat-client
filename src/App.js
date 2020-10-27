@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Api from "./utils/api";
 
 import ChatContainer from "./components/ChatContainer";
 import InputContainer from "./components/InputContainer";
@@ -11,19 +12,19 @@ const ENDPOINT = "http://localhost:3001";
 function App() {
   const socket = socketIOClient(ENDPOINT);
   const [chatList, setChatList] = useState([]);
+  const getChatList = () => {
+    Api.get("/").then((response) => {
+      // console.log(response.data);
+      setChatList(response.data);
+    });
+  };
 
-  socket.on("chat message", (msg) => {
-    console.log("received : ", msg);
-    // setChatList((chatList) => [
-    //   ...chatList,
-    //   {
-    //     id: Math.floor(Math.random() * 10000),
-    //     msg,
-    //   },
-    // ]);
-  });
   useEffect(() => {
-    console.log("chatList : ", chatList);
+    getChatList();
+    socket.on("chat received", (result) => {
+      getChatList();
+    });
+    console.log(chatList);
   }, []);
   return (
     <div className="App">
@@ -31,8 +32,8 @@ function App() {
       <ChatContainer>
         {chatList.map((chat) => (
           <div className="chat" key={chat.id}>
-            <h5 className="username">User</h5>
-            <p className="message">{chat.msg}</p>
+            <h5 className="username">{chat.username}</h5>
+            <p className="message">{chat.message}</p>
           </div>
         ))}
       </ChatContainer>

@@ -89,16 +89,22 @@ $darkGrey: #212121;
   align-items: center;
   justify-content: center;
 
-  .chat-input {
+  input {
     padding: 1rem 2rem;
     height: 6vh;
-    width: 90vw;
     border: 2px solid rgb(201, 201, 201);
     border-radius: 100px;
     outline: none;
     &:focus {
       border: 2px solid $primary;
     }
+  }
+  .chat-input {
+    width: 60vw;
+  }
+  .username-input {
+    width: 20vw;
+    margin-right: 1rem;
   }
   button {
     border: none;
